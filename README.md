@@ -4,7 +4,7 @@
 
 Lien vers le sujet:<br>
 Technologies utilisées: **Entity Framework, LINQ, C#**<br>
-<br><br>
+<br>
 Cette mission a été réalisée en présence de **Bonnascer Gomes** et de **Kendall Saint-Fleur**.
 Pack pré-requis pour que le projet fonctionne correctement sous Visual Studio 2010 Ultimate: 
 
