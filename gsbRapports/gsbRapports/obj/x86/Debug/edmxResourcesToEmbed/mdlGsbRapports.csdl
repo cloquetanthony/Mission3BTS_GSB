@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gsbrapportsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="gsbrapportsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="familles" EntityType="gsbrapportsModel.famille" />
+    <EntitySet Name="medecins" EntityType="gsbrapportsModel.medecin" />
+    <EntitySet Name="medicaments" EntityType="gsbrapportsModel.medicament" />
+    <EntitySet Name="offrirs" EntityType="gsbrapportsModel.offrir" />
+    <EntitySet Name="rapports" EntityType="gsbrapportsModel.rapport" />
+    <EntitySet Name="visiteurs" EntityType="gsbrapportsModel.visiteur" />
+    <AssociationSet Name="medicament_fk" Association="gsbrapportsModel.medicament_fk">
+      <End Role="famille" EntitySet="familles" />
+      <End Role="medicament" EntitySet="medicaments" />
+    </AssociationSet>
+    <AssociationSet Name="rapport_fk2" Association="gsbrapportsModel.rapport_fk2">
+      <End Role="medecin" EntitySet="medecins" />
+      <End Role="rapport" EntitySet="rapports" />
+    </AssociationSet>
+    <AssociationSet Name="offrir_fk2" Association="gsbrapportsModel.offrir_fk2">
+      <End Role="medicament" EntitySet="medicaments" />
+      <End Role="offrir" EntitySet="offrirs" />
+    </AssociationSet>
+    <AssociationSet Name="offrir_fk1" Association="gsbrapportsModel.offrir_fk1">
+      <End Role="rapport" EntitySet="rapports" />
+      <End Role="offrir" EntitySet="offrirs" />
+    </AssociationSet>
+    <AssociationSet Name="rapport_fk1" Association="gsbrapportsModel.rapport_fk1">
+      <End Role="visiteur" EntitySet="visiteurs" />
+      <End Role="rapport" EntitySet="rapports" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="famille">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" />
+    <Property Name="libelle" Type="String" Nullable="false" />
+    <NavigationProperty Name="medicaments" Relationship="gsbrapportsModel.medicament_fk" FromRole="famille" ToRole="medicament" />
+  </EntityType>
+  <EntityType Name="medecin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" Nullable="false" />
+    <Property Name="prenom" Type="String" Nullable="false" />
+    <Property Name="adresse" Type="String" Nullable="false" />
+    <Property Name="tel" Type="String" />
+    <Property Name="specialiteComplementaire" Type="String" />
+    <Property Name="departement" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="rapports" Relationship="gsbrapportsModel.rapport_fk2" FromRole="medecin" ToRole="rapport" />
+  </EntityType>
+  <EntityType Name="medicament">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" />
+    <Property Name="nomCommercial" Type="String" Nullable="false" />
+    <Property Name="idFamille" Type="String" Nullable="false" />
+    <Property Name="composition" Type="String" Nullable="false" />
+    <Property Name="effets" Type="String" Nullable="false" />
+    <Property Name="contreIndications" Type="String" Nullable="false" />
+    <NavigationProperty Name="famille" Relationship="gsbrapportsModel.medicament_fk" FromRole="medicament" ToRole="famille" />
+    <NavigationProperty Name="offrirs" Relationship="gsbrapportsModel.offrir_fk2" FromRole="medicament" ToRole="offrir" />
+  </EntityType>
+  <EntityType Name="offrir">
+    <Key>
+      <PropertyRef Name="idRapport" />
+      <PropertyRef Name="idMedicament" />
+    </Key>
+    <Property Name="idRapport" Type="Int32" Nullable="false" />
+    <Property Name="idMedicament" Type="String" Nullable="false" />
+    <Property Name="quantite" Type="Int32" />
+    <NavigationProperty Name="medicament" Relationship="gsbrapportsModel.offrir_fk2" FromRole="offrir" ToRole="medicament" />
+    <NavigationProperty Name="rapport" Relationship="gsbrapportsModel.offrir_fk1" FromRole="offrir" ToRole="rapport" />
+  </EntityType>
+  <EntityType Name="rapport">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="DateTime" />
+    <Property Name="motif" Type="String" />
+    <Property Name="bilan" Type="String" />
+    <Property Name="idVisiteur" Type="String" Nullable="false" />
+    <Property Name="idMedecin" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="medecin" Relationship="gsbrapportsModel.rapport_fk2" FromRole="rapport" ToRole="medecin" />
+    <NavigationProperty Name="offrirs" Relationship="gsbrapportsModel.offrir_fk1" FromRole="rapport" ToRole="offrir" />
+    <NavigationProperty Name="visiteur" Relationship="gsbrapportsModel.rapport_fk1" FromRole="rapport" ToRole="visiteur" />
+  </EntityType>
+  <EntityType Name="visiteur">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" />
+    <Property Name="nom" Type="String" />
+    <Property Name="prenom" Type="String" />
+    <Property Name="login" Type="String" />
+    <Property Name="mdp" Type="String" />
+    <Property Name="adresse" Type="String" />
+    <Property Name="cp" Type="String" />
+    <Property Name="ville" Type="String" />
+    <Property Name="dateEmbauche" Type="DateTime" />
+    <NavigationProperty Name="rapports" Relationship="gsbrapportsModel.rapport_fk1" FromRole="visiteur" ToRole="rapport" />
+  </EntityType>
+  <Association Name="medicament_fk">
+    <End Role="famille" Type="gsbrapportsModel.famille" Multiplicity="1" />
+    <End Role="medicament" Type="gsbrapportsModel.medicament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="famille">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="medicament">
+        <PropertyRef Name="idFamille" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="rapport_fk2">
+    <End Role="medecin" Type="gsbrapportsModel.medecin" Multiplicity="1" />
+    <End Role="rapport" Type="gsbrapportsModel.rapport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medecin">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="rapport">
+        <PropertyRef Name="idMedecin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="offrir_fk2">
+    <End Role="medicament" Type="gsbrapportsModel.medicament" Multiplicity="1" />
+    <End Role="offrir" Type="gsbrapportsModel.offrir" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medicament">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="offrir">
+        <PropertyRef Name="idMedicament" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="offrir_fk1">
+    <End Role="rapport" Type="gsbrapportsModel.rapport" Multiplicity="1" />
+    <End Role="offrir" Type="gsbrapportsModel.offrir" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rapport">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="offrir">
+        <PropertyRef Name="idRapport" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="rapport_fk1">
+    <End Role="visiteur" Type="gsbrapportsModel.visiteur" Multiplicity="1" />
+    <End Role="rapport" Type="gsbrapportsModel.rapport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="visiteur">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="rapport">
+        <PropertyRef Name="idVisiteur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
