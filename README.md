@@ -1,12 +1,19 @@
 # Mission 3A Contexte GSB - BTS SIO
 
 ## Caractéristiques
-
-Lien vers le sujet:<br>
-Technologies utilisées: **Entity Framework, LINQ, C#**<br>
 <br>
+Technologies utilisées: **C#, Entity Framework, LINQ**
+<br>
+Lien vers le sujet: [voir](https://cloquet-anthony.fr/telechargement/missions/mission3VersionA.docx) <br>
+Tests fonctionnels: [voir](https://cloquet-anthony.fr/telechargement/missions/TestsFonctionnels_Mission3A-GSB.pdf)<br>
+Maquettages: [voir](https://cloquet-anthony.fr/telechargement/missions/MaquettageGestionMedecins_Mission3A-GSB.pptx) [voir](https://cloquet-anthony.fr/telechargement/missions/MaquettageDernierRapport_Mission3A-GSB.pptx)
+<br>
+Gantt: [voir](https://cloquet-anthony.fr/telechargement/missions/Gantt_Mission3A-GSB.pdf)
+<br><br>
 Cette mission a été réalisée en présence de **Bonnascer Gomes** et de **Kendall Saint-Fleur**.<br>
-Pack pré-requis pour que le projet fonctionne correctement sous Visual Studio 2010 Ultimate: 
+Pack pré-requis pour que le projet fonctionne correctement sous Visual Studio 2010 Ultimate: [télécharger](https://cloquet-anthony.fr/telechargement/PACK_Mission3A-GSB.rar)
+<br>
+Gestion des médecins (ajouter, éditer, supprimer) et affichage du dernier rapport d'un médecin avec possibilité d'exporter le rapport en XML.
 
 ## Installation
 
