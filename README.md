@@ -1,14 +1,15 @@
 # Mission 3A Contexte GSB - BTS SIO
 
 ## Caractéristiques
+
 <br>
 Technologies utilisées: **C#, Entity Framework, LINQ**
 <br>
-Lien vers le sujet: [voir](https://cloquet-anthony.fr/telechargement/missions/mission3VersionA.docx) <br>
-Tests fonctionnels: [voir](https://cloquet-anthony.fr/telechargement/missions/TestsFonctionnels_Mission3A-GSB.pdf)<br>
-Maquettages: [voir](https://cloquet-anthony.fr/telechargement/missions/MaquettageGestionMedecins_Mission3A-GSB.pptx) [voir](https://cloquet-anthony.fr/telechargement/missions/MaquettageDernierRapport_Mission3A-GSB.pptx)
+Lien vers le sujet: https://cloquet-anthony.fr/telechargement/missions/mission3VersionA.docx <br>
+Tests fonctionnels: https://cloquet-anthony.fr/telechargement/missions/TestsFonctionnels_Mission3A-GSB.pdf <br>
+Maquettages: https://cloquet-anthony.fr/telechargement/missions/MaquettageGestionMedecins_Mission3A-GSB.pptx & https://cloquet-anthony.fr/telechargement/missions/MaquettageDernierRapport_Mission3A-GSB.pptx
 <br>
-Gantt: [voir](https://cloquet-anthony.fr/telechargement/missions/Gantt_Mission3A-GSB.pdf)
+Gantt: https://cloquet-anthony.fr/telechargement/missions/Gantt_Mission3A-GSB.pdf
 <br><br>
 Cette mission a été réalisée en présence de **Bonnascer Gomes** et de **Kendall Saint-Fleur**.<br>
 Pack pré-requis pour que le projet fonctionne correctement sous Visual Studio 2010 Ultimate: [télécharger](https://cloquet-anthony.fr/telechargement/PACK_Mission3A-GSB.rar)
